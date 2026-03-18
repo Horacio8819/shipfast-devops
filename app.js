@@ -2,7 +2,7 @@ const express = require('express');
 const app = express(); 
 
 app.get('/', (req, res) => { 
-	res.send('ShipFast deployed via CI/CD ✅'); 
+	res.send('ShipFast deployed via CI/CD Test✅'); 
 }); 
 
 app.get('/health', (req, res) => { 
