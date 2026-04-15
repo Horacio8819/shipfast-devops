@@ -26,9 +26,11 @@ jobs:
               "set -e",
               "if [ ! -d /var/www/shipfast/.git ]; then rm -rf /var/www/shipfast/* && git clone https://github.com/'"${{ github.repository }}"' /var/www/shipfast; fi",
               "cd /var/www/shipfast",
-              "git pull origin main",
+              "git fetch origin",
+              "git reset --hard origin/main",
               "npm install",
-              "pm2 restart shipfast || pm2 start app.js --name shipfast",
+              "pm2 delete shipfast || true"
+              "pm2 start app.js --name shipfast",
               "pm2 save",
               "sudo systemctl reload nginx"
             ]'
